@@ -11,11 +11,13 @@ This RFC details work in close collaboration with Niko Matsakis and Yehuda Katz,
 Rust offers a unique value proposition in the landscape of languages in part by codifying concepts like ownership and borrowing. Because these concepts are unique to Rust, it's critical that the learning curve be as smooth as possible. And one of the most important tools for lowering the learning curve is providing excellent errors that serve to make the concepts less intimidating, and to help 'tell the story' about what those concepts mean in the context of the programmer's code.  
 
 ![Image of current error format](http://www.jonathanturner.org/images/old_errors_new2.png)
+
 *Example of a borrow check error in the current compiler*
 
 This RFC details a redesign of errors to focus more on the source the programmer wrote.  In doing so, these new messages help eliminate clutter, remove difficult language, and focus on more effectively "telling the story" about how an error occurred.
 
 ![Image of new error flow](http://www.jonathanturner.org/images/new_errors_new2.png)
+
 *Example of the same borrow check error in the proposed format*
 
 ## Detailed Design
@@ -181,6 +183,7 @@ There is a fair amount of work involved to update the errors to this new format 
 Rather than using this format, another format that's becoming more popular (even being called out by famous programmers like John Carmack) is the Elm error format.
 
 ![Image of Elm error](http://www.jonathanturner.org/images/elm_error.jpg)
+
 *Example of an Elm error*
 
 While this could be the default error format, I, and those who helped put this RFC together, feel that a tighter error format with good labels is a better error for everyday use.  Instead of being the default, we propose the extension to --explain to be able to output content like the example Elm error above.
