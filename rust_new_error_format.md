@@ -10,6 +10,7 @@ This RFC details work in close collaboration with Niko Matsakis and Yehuda Katz,
 
 Rust offers a unique value proposition in the landscape of languages in part by codifying concepts like ownership and borrowing. Because these concepts are unique to Rust, it's critical that the learning curve be as smooth as possible. And one of the most important tools for lowering the learning curve is providing excellent errors that serve to make the concepts less intimidating, and to help 'tell the story' about what those concepts mean in the context of the programmer's code.  
 
+![Image of current error format](http://www.jonathanturner.org/images/old_errors.png)
 *Example of a borrow check error in the current compiler*
 
 This RFC details a redesign of errors to focus more on the source the programmer wrote.  In doing so, these new messages help eliminate clutter, remove difficult language, and focus on more effectively "telling the story" about how an error occurred.
