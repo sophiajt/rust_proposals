@@ -110,9 +110,9 @@ We propose changing --explain to no longer take an error code.  Instead, passing
 
 For example, today for E0507, the --explain text begins:
 
+```
 You tried to move out of a value which was borrowed. Erroneous code example:
 
-```
 use std::cell::RefCell;
 
 struct TheDarkKnight;
@@ -126,7 +126,6 @@ fn main() {
 
     x.borrow().nothing_is_true(); // error: cannot move out of borrowed content
 }
-```
 
 Here, the `nothing_is_true` method takes the ownership of `self`. However,
 `self` cannot be moved because `.borrow()` only provides an `&TheDarkKnight`,
@@ -136,8 +135,9 @@ you have three choices:
 * Try to avoid moving the variable.
 * Somehow reclaim the ownership.
 * Implement the `Copy` trait on the type.
+```
 
-Rather than having to fabricate example code and expect the user to translate the important parts for their current issue, we can just use the user's code.  An alternative using the proposed change may look like:
+This example shows off some of the great work that we've done to help explain the errors to users.  We propose extending this, and using the user's actual code, rather than having to fabricate example code.  An alternative using the proposed change may look like:
 
 ```
 error: cannot move out of borrowed content
