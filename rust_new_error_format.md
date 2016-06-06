@@ -15,7 +15,7 @@ Rust offers a unique value proposition in the landscape of languages in part by 
 
 This RFC details a redesign of errors to focus more on the source the programmer wrote.  In doing so, these new messages help eliminate clutter, remove difficult language, and focus on more effectively "telling the story" about how an error occurred.
 
-![Image of current error format](http://www.jonathanturner.org/images/new_errors.png)
+![Image of new error flow](http://www.jonathanturner.org/images/new_errors.png)
 *Example of the same borrow check error in the proposed format*
 
 ## Detailed Design
@@ -25,7 +25,7 @@ Format
 
 The proposal is a lighter error format focused on the code the user wrote.  Messages that help understand why an error occurred appear as labels on the source.  You can see an example below:
 
-![Image of current error format](http://www.jonathanturner.org/images/new_errors.png)
+![Image of new error flow](http://www.jonathanturner.org/images/new_errors.png)
 
 The goals of this new format are to:
 
@@ -49,13 +49,13 @@ In order to accomplish this, the proposed design needs to satisfy a number of co
 
 ### Header
 
-![Image of current error format](http://www.jonathanturner.org/images/rust_error_3.png)
+![Image of new error format header](http://www.jonathanturner.org/images/rust_error_1_new.png)
 
 The header now spans two lines.  It gives you access to knowing a) if it's a warning or error, b) the text of the warning/error, and c) the location of this warning/error.  You can see we also use the [--explain E0499] as a way to let the developer know they can get more information about this kind of issue.  While we use some bright colors here, we expect the use of colors and bold text in the 'Source area' (shown below) to draw the eye first.
 
 ### Line number column
 
-![Image of current error format](http://www.jonathanturner.org/images/rust_error_2.png)
+![Image of new error format line number column](http://www.jonathanturner.org/images/rust_error_2_new.png)
 
 The line number column lets you know where the error is occurring in the file.  Because we only show lines that are of interest for the given error/warning, we elide lines if they are not annotated as part of the message (we currently use the heuristic to elide after one un-annotated line).  
 
@@ -63,7 +63,7 @@ Inspired by Dybuk and Elm, the line numbers are separated with a 'wall', a separ
 
 ### Source area
 
-![Image of current error format](http://www.jonathanturner.org/images/rust_error_1.png)
+![Image of new error format source area](http://www.jonathanturner.org/images/rust_error_3_new.png)
 
 The source area shows the related source code for the error/warning.  The source is laid out in the order it appears in the source file, giving the user a way to map the message against the source they wrote.
 
@@ -73,7 +73,7 @@ Key parts of the code are labeled with messages to help the user understand the 
 
 The new error format helps the user understand what is wrong with a piece of code by showing key parts of the code and how they contribute to the error.  Let's look at our example again, with this in mind:
 
-![Image of current error format](http://www.jonathanturner.org/images/new_errors.png)
+![Image of new error flow](http://www.jonathanturner.org/images/new_errors.png)
 
 You can see three different labels on different parts of the code:
 
@@ -90,7 +90,7 @@ Ideally, error messages should use labels to give the reader a way to understand
 * We found that using 'flow-sensitive' language like saying "first" and "second" helped readability.  That said, this also poses a challenge that we have to always ensure that the label text does not create additional confusion by being shown in a an order that feels unnatural to the user.
 * Label text has limited space for readability.  Long labels can make the message difficult to read:
 
-![Image of current error format](http://www.jonathanturner.org/images/cargo_error.png)
+![Image of confusing cargo error](http://www.jonathanturner.org/images/cargo_error.png)
 
 Instead, favor labels that are ~6 words or less.
 
@@ -154,27 +154,7 @@ you have three choices:
 
 This example shows off some of the great work that we've done to help explain the errors to users.  We propose extending this, and using the user's actual code, rather than having to fabricate example code.  An alternative using the proposed change may look like:
 
-```
-error: cannot move out of borrowed content
-  --> /Users/jturner/Source/errors/borrowck-move-out-of-vec-tail.rs:30:17
-
-I’m trying to track the ownership of the contents of `tail`, which is borrowed,
-through this match statement:
-
-29  |>             match tail {
-
-In this match, you use a pattern which will bind to a member of `tail` as a value.
-This will move the contents out of `tail`.  Because `tail` is borrowed, you can’t
-safely move the contents.
-
-30  |>                 [Foo { string: aa },
-    |>                                ^^ cannot move out of borrowed content
-
-You can avoid moving the contents by using a reference in the pattern, rather than
-a move.  A naive fix might look this:
-
-30  |>                 [Foo { string: ref aa },
-```
+![Image of Rust error in elm-style](http://www.jonathanturner.org/images/elm_like_rust.png)
 
 In addition, we propose that the final error message:
 
