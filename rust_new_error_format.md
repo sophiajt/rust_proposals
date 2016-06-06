@@ -15,7 +15,8 @@ Rust offers a unique value proposition in the landscape of languages in part by 
 
 This RFC details a redesign of errors to focus more on the source the programmer wrote.  In doing so, these new messages help eliminate clutter, remove difficult language, and focus on more effectively "telling the story" about how an error occurred.
 
-Example of the same borrow check error in the proposed format
+![Image of current error format](http://www.jonathanturner.org/images/new_errors.png)
+*Example of the same borrow check error in the proposed format*
 
 ## Detailed Design
 
@@ -23,6 +24,8 @@ The RFC is separated into four parts.  The first three detail changes to how err
 Format
 
 The proposal is a lighter error format focused on the code the user wrote.  Messages that help understand why an error occurred appear as labels on the source.  You can see an example below:
+
+![Image of current error format](http://www.jonathanturner.org/images/new_errors.png)
 
 The goals of this new format are to:
 
@@ -46,15 +49,21 @@ In order to accomplish this, the proposed design needs to satisfy a number of co
 
 ### Header
 
+![Image of current error format](http://www.jonathanturner.org/images/rust_error_1.png)
+
 The header now spans two lines.  It gives you access to knowing a) if it's a warning or error, b) the text of the warning/error, and c) the location of this warning/error.  You can see we also use the [--explain E0499] as a way to let the developer know they can get more information about this kind of issue.  While we use some bright colors here, we expect the use of colors and bold text in the 'Source area' (shown below) to draw the eye first.
 
 ### Line number column
+
+![Image of current error format](http://www.jonathanturner.org/images/rust_error_2.png)
 
 The line number column lets you know where the error is occurring in the file.  Because we only show lines that are of interest for the given error/warning, we elide lines if they are not annotated as part of the message (we currently use the heuristic to elide after one un-annotated line).  
 
 Inspired by Dybuk and Elm, the line numbers are separated with a 'wall', a separator formed from |>, to clearly distinguish what is a line number from what is source at a glance.
 
 ### Source area
+
+![Image of current error format](http://www.jonathanturner.org/images/rust_error_3.png)
 
 The source area shows the related source code for the error/warning.  The source is laid out in the order it appears in the source file, giving the user a way to map the message against the source they wrote.
 
@@ -64,11 +73,13 @@ Key parts of the code are labeled with messages to help the user understand the 
 
 The new error format helps the user understand what is wrong with a piece of code by showing key parts of the code and how they contribute to the error.  Let's look at our example again, with this in mind:
 
+![Image of current error format](http://www.jonathanturner.org/images/new_errors.png)
+
 You can see three different labels on different parts of the code:
 
 * first mutable borrow occurs here
 * second mutable borrow occurs here (the actual error)
-8 first borrow ends here
+* first borrow ends here
 
 Taken together the user can read the "story" about the mutable borrow that already occurred, when that borrow will end, and that a second borrow happens between these two, which causes the error.  
 
@@ -78,6 +89,8 @@ Ideally, error messages should use labels to give the reader a way to understand
 * Secondary labels (those with ---) can be used to describe helpful starts to the issue.  For example, if a const is redefined, the secondary label can point out the first time the const is defined.
 * We found that using 'flow-sensitive' language like saying "first" and "second" helped readability.  That said, this also poses a challenge that we have to always ensure that the label text does not create additional confusion by being shown in a an order that feels unnatural to the user.
 * Label text has limited space for readability.  Long labels can make the message difficult to read:
+
+![Image of current error format](http://www.jonathanturner.org/images/cargo_error.png)
 
 Instead, favor labels that are ~6 words or less.
 
@@ -100,6 +113,7 @@ Some technical terms that can be changed without losing the meaning of the error
 | mutate | "update" or "write" |
 | integral | "integer" or "number" |
 | elided | "inferred" or "assumed" or "left out" |
+| arity | number of arguments |
 
 While other technical terms should remain because they are used in the language itself and are generally required to understand how to use Rust.  For example, mutable/immutable are the correct adjectives because 'mut' is a keyword in Rust.  The same is true for terms like associated type, derive, borrow, and lifetime.
 
