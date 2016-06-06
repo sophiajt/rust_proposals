@@ -143,16 +143,20 @@ Rather than having to fabricate example code and expect the user to translate th
 error: cannot move out of borrowed content
   --> /Users/jturner/Source/errors/borrowck-move-out-of-vec-tail.rs:30:17
 
-I’m trying to track the ownership of the contents of `tail`, which is borrowed, through this match statement:
+I’m trying to track the ownership of the contents of `tail`, which is borrowed,
+through this match statement:
 
 29  |>             match tail {
 
-In this match, you use a pattern which will bind to a member of `tail` as a value.  This will move the contents out of `tail`.  Because `tail` is borrowed, you can’t safely move the contents.
+In this match, you use a pattern which will bind to a member of `tail` as a value.
+This will move the contents out of `tail`.  Because `tail` is borrowed, you can’t
+safely move the contents.
 
 30  |>                 [Foo { string: aa },
     |>                                ^^ cannot move out of borrowed content
 
-You can avoid moving the contents by using a reference in the pattern, rather than a move.  A naive fix might look this:
+You can avoid moving the contents by using a reference in the pattern, rather than
+a move.  A naive fix might look this:
 
 30  |>                 [Foo { string: ref aa },
 ```
