@@ -180,7 +180,7 @@ There is a fair amount of work involved to update the errors to this new format 
 
 Rather than using this format, another format that's becoming more popular (even being called out by famous programmers like John Carmack) is the Elm error format.
 
-![Image of Elm error](http://www.jonathanturner.org/images/elm_error.png)
+![Image of Elm error](http://www.jonathanturner.org/images/elm_error.jpg)
 *Example of an Elm error*
 
 While this could be the default error format, I, and those who helped put this RFC together, feel that a tighter error format with good labels is a better error for everyday use.  Instead of being the default, we propose the extension to --explain to be able to output content like the example Elm error above.
