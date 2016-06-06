@@ -15,7 +15,7 @@ Rust offers a unique value proposition in the landscape of languages in part by 
 
 This RFC details a redesign of errors to focus more on the source the programmer wrote.  In doing so, these new messages help eliminate clutter, remove difficult language, and focus on more effectively "telling the story" about how an error occurred.
 
-![Image of new error flow](http://www.jonathanturner.org/images/new_errors_new.png)
+![Image of new error flow](http://www.jonathanturner.org/images/new_errors_new2.png)
 *Example of the same borrow check error in the proposed format*
 
 ## Detailed Design
@@ -25,7 +25,7 @@ Format
 
 The proposal is a lighter error format focused on the code the user wrote.  Messages that help understand why an error occurred appear as labels on the source.  You can see an example below:
 
-![Image of new error flow](http://www.jonathanturner.org/images/new_errors_new.png)
+![Image of new error flow](http://www.jonathanturner.org/images/new_errors_new2.png)
 
 The goals of this new format are to:
 
@@ -73,7 +73,7 @@ Key parts of the code are labeled with messages to help the user understand the 
 
 The new error format helps the user understand what is wrong with a piece of code by showing key parts of the code and how they contribute to the error.  Let's look at our example again, with this in mind:
 
-![Image of new error flow](http://www.jonathanturner.org/images/new_errors_new.png)
+![Image of new error flow](http://www.jonathanturner.org/images/new_errors_new2.png)
 
 You can see three different labels on different parts of the code:
 
