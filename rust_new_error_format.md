@@ -49,7 +49,7 @@ In order to accomplish this, the proposed design needs to satisfy a number of co
 
 ### Header
 
-![Image of current error format](http://www.jonathanturner.org/images/rust_error_1.png)
+![Image of current error format](http://www.jonathanturner.org/images/rust_error_3.png)
 
 The header now spans two lines.  It gives you access to knowing a) if it's a warning or error, b) the text of the warning/error, and c) the location of this warning/error.  You can see we also use the [--explain E0499] as a way to let the developer know they can get more information about this kind of issue.  While we use some bright colors here, we expect the use of colors and bold text in the 'Source area' (shown below) to draw the eye first.
 
@@ -63,7 +63,7 @@ Inspired by Dybuk and Elm, the line numbers are separated with a 'wall', a separ
 
 ### Source area
 
-![Image of current error format](http://www.jonathanturner.org/images/rust_error_3.png)
+![Image of current error format](http://www.jonathanturner.org/images/rust_error_1.png)
 
 The source area shows the related source code for the error/warning.  The source is laid out in the order it appears in the source file, giving the user a way to map the message against the source they wrote.
 
