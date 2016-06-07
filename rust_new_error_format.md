@@ -33,7 +33,9 @@ This RFC details a redesign of errors to focus more on the source the programmer
 
 ## Expanded error format (revised --explain)
 
-Likewise, today --explain text is generic and does not incorporate the code the user wrote.  For example, today for E0507, the --explain text begins:
+Languages like Elm have shown how effective an educational tool error messages can be if the explanations like our --explain text are mixed with the user's code.  As mentioned earlier, it's crucial for Rust to be easy-to-use, especially since it introduces a fair number of concepts that may be unfamiliar to the user.  Even experienced users may need to use --explain text from time to time when they encounter unfamiliar messages.
+
+While we have --explain text today, it uses generic examples that require the user to mental translate the given example into what works for their specific situation.
 
 ```
 You tried to move out of a value which was borrowed. Erroneous code example:
@@ -45,11 +47,12 @@ struct TheDarkKnight;
 impl TheDarkKnight {
     fn nothing_is_true(self) {}
 }
+...
 ```
 
-Languages like Elm have shown how effective an educational tool error messages can be if the verbose explanations like our --explain text are mixed with the user's code.  As mentioned earlier, it's crucial for Rust to be as easy-to-use as possible, especially since it introduces a fair number of concepts that may be unfamiliar to the user.  Even experienced users may need to use --explain text from time to time when they encounter unfamiliar messages.
+*Example of the current --explain (showing E0507)*
 
-To that end, this RFC proposes that --explain no longer users an error code.  Instead, --explain becomes a flag in a cargo or rustc invocation that enables a richer, expanded error-reporting mode inspired by languages like Elm.  This more textual mode gives additional explanation to help understand compiler messages better.  
+To help users, this RFC proposes that --explain no longer uses an error code.  Instead, --explain becomes a flag in a cargo or rustc invocation that enables an expanded error-reporting mode which incorporates the user's code.  This more textual mode gives additional explanation to help understand compiler messages better.  The end result is a richer, on-demand error reporting style.
 
 ![Image of Rust error in elm-style](http://www.jonathanturner.org/images/elm_like_rust.png)
 
