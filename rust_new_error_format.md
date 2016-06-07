@@ -126,9 +126,9 @@ Note: We'll talk more about additional style guidance for wording to help create
 
 ## Expanded error messages
 
-Currently, --explain text focuses on the error code.  You can call the compiler with --explain <error code> and receive a verbose description of what causes errors of that number.
+Currently, --explain text focuses on the error code.  You invoke the compiler with --explain <error code> and receive a verbose description of what causes errors of that number.  The resulting message can be helpful, but it uses generic sample code which makes it feel less connected to the user's code.
 
-We propose changing --explain to no longer take an error code.  Instead, passing --explain to the compiler (or to cargo) will turn the compiler output into an expanded form.  
+We propose changing --explain to no longer take an error code.  Instead, passing --explain to the compiler (or to cargo) will turn the compiler output into an expanded form which incorporates the same source and label information the user saw in the default message with more explanation text.
 
 ![Image of Rust error in elm-style](http://www.jonathanturner.org/images/elm_like_rust.png)
 
