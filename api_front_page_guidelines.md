@@ -5,7 +5,7 @@
 
 # Summary
 
-This RFC is a companion to [API doc guidelines proposal](https://github.com/rust-lang/rfcs/pull/1574/).  In this RFC, we focus on the format and style of the "front page" of an API.  
+This RFC is a companion to [API doc guidelines proposal](https://github.com/rust-lang/rfcs/pull/1574/).  In this RFC, we focus on the format and style of the "front page" of an API.  The goal of this RFC is to outline a clear presentation style for crate documentation that is helpful to new users of a crate.
 
 This work was jointly done with Jeremiah Peschka (aka peschkaj).
 
