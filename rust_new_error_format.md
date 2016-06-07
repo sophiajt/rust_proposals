@@ -153,7 +153,7 @@ error: aborting due to 2 previous errors
 Be changed to notify users of this ability:
 
 ```
-note: Compile again with --explain for more information on these errors
+note: You can compile again with --explain for more information about these errors
 ```
 
 As this helps inform the user of the --explain capability.
