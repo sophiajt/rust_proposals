@@ -25,7 +25,7 @@ Though a lot of time has been spent on the current error messages, they have a c
 * Lacks a clear visual break between errors.  As more errors occur it becomes more difficult to tell them apart.
 * Uses technical terminology that is difficult for new users who may be unfamiliar with compiler terminology or terminology specific to Rust.
 
-This RFC details a redesign of errors to focus more on the source the programmer wrote.  This format addresses the above concerns by eliminating clutter, following a more natural order for help messages, and pointing the user to both the "what" of the error and the "why" using color-coded labels.  Below you can see the same error again, this time using the proposed format:
+This RFC details a redesign of errors to focus more on the source the programmer wrote.  This format addresses the above concerns by eliminating clutter, following a more natural order for help messages, and pointing the user to both "what" the error is and "why" the error is occurring by using color-coded labels.  Below you can see the same error again, this time using the proposed format:
 
 ![Image of new error flow](http://www.jonathanturner.org/images/new_errors_new2.png)
 
