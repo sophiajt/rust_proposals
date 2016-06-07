@@ -9,6 +9,9 @@ This RFC proposes an update to error reporting in rustc.  Its focus is to change
 This RFC details work in close collaboration with Niko Matsakis and Yehuda Katz, with input from Aaron Turon and Alex Crichton.  Special thanks to those who gave us feedback on previous iterations of the proposal.
 
 # Motivation
+
+## New error format
+
 Rust offers a unique value proposition in the landscape of languages in part by codifying concepts like ownership and borrowing. Because these concepts are unique to Rust, it's critical that the learning curve be as smooth as possible. And one of the most important tools for lowering the learning curve is providing excellent errors that serve to make the concepts less intimidating, and to help 'tell the story' about what those concepts mean in the context of the programmer's code.  
 
 ![Image of current error format](http://www.jonathanturner.org/images/old_errors_new2.png)
@@ -28,6 +31,8 @@ This RFC details a redesign of errors to focus more on the source the programmer
 
 *Example of the same borrow check error in the proposed format*
 
+## Expanded error format (revised --explain)
+
 Likewise, today --explain text is generic and does not incorporate the code the user wrote.  For example, today for E0507, the --explain text begins:
 
 ```
@@ -44,7 +49,7 @@ impl TheDarkKnight {
 
 Languages like Elm have shown how effective an educational tool error messages can be if the verbose explanations like our --explain text are mixed with the user's code.  As mentioned earlier, it's crucial for Rust to be as easy-to-use as possible, especially since it introduces a fair number of concepts that may be unfamiliar to the user.  Even experienced users may need to use --explain text from time to time when they encounter unfamiliar messages.
 
-To that end, this RFC proposes that --explain no longer users an error code.  Instead, --explain becomes a flag in a cargo or rustc invocation that enables a verbose error-reporting mode.  This verbose mode gives additional explanation to help understand compiler messages better.  
+To that end, this RFC proposes that --explain no longer users an error code.  Instead, --explain becomes a flag in a cargo or rustc invocation that enables a richer, expanded error-reporting mode inspired by languages like Elm.  This more textual mode gives additional explanation to help understand compiler messages better.  
 
 ![Image of Rust error in elm-style](http://www.jonathanturner.org/images/elm_like_rust.png)
 
