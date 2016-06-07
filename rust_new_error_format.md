@@ -172,9 +172,9 @@ Rather than using the proposed error format format, we could only provide the ve
 
 ![Image of Elm error](http://www.jonathanturner.org/images/elm_error.jpg)
 
-In developing this RFC, we experimented with both styles.  The Elm error format is great as an educational tool, and we wanted to leverage its style in Rust.  For day-to-day work, though, we favor an error format that puts heavy emphasis on quickly guiding the user to what the error is and why it occurred, with an easy way to get the richer explanations when necessary.
-
 *Example of an Elm error*
+
+In developing this RFC, we experimented with both styles.  The Elm error format is great as an educational tool, and we wanted to leverage its style in Rust.  For day-to-day work, though, we favor an error format that puts heavy emphasis on quickly guiding the user to what the error is and why it occurred, with an easy way to get the richer explanations when necessary.
 
 While this could be the default error format, I, and those who helped put this RFC together, feel that a tighter error format with good labels is a better error for everyday use.  Instead of being the default, we propose the extension to --explain to be able to output content like the example Elm error above.
 
