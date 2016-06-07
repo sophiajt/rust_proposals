@@ -140,7 +140,7 @@ It's possible to also add additional labels that aren't necessarily shown in the
 
 ![Image of same error without all of the same labels](http://www.jonathanturner.org/images/default_borrowed_content.png)
 
-This gives the explain text writer maximal flexibility without impacting the readability of the default message.
+This gives the explain text writer maximal flexibility without impacting the readability of the default message.  I'm currently prototyping an implementation of how this templating could work in practice.
 
 ## Tying it together
 
