@@ -158,7 +158,7 @@ note: You can compile again with --explain for more information about these erro
 
 As this helps inform the user of the --explain capability.
 
-## Drawbacks
+# Drawbacks
 
 Changes in the error format can impact integration with other tools.  For example, IDEs that use a simple regex to detect the error would need to be updated to support the new format.  This takes time and community coordination.
 
@@ -166,7 +166,7 @@ While the new error format has a lot of benefits, it's possible that some errors
 
 There is a fair amount of work involved to update the errors and explain text to the proposed format.  
 
-## Alternatives
+# Alternatives
 
 Rather than using the proposed error format format, we could only provide the verbose --explain style that is proposed in this RFC.  Famous programmers like [John Carmack](https://twitter.com/ID_AA_Carmack/status/735197548034412546) have praised the Elm error format.
 
@@ -178,7 +178,7 @@ In developing this RFC, we experimented with both styles.  The Elm error format 
 
 While this could be the default error format, I, and those who helped put this RFC together, feel that a tighter error format with good labels is a better error for everyday use.  Instead of being the default, we propose the extension to --explain to be able to output content like the example Elm error above.
 
-## Stabilization
+# Stabilization
 
 Currently, these new rust error format is available on nightly using the ```export RUST_NEW_ERROR_FORMAT=true``` environment variable.  Ultimately, this should become the default.  In order to get there, we need to ensure that the new error format is indeed an improvement over the existing format in practice.  
 
@@ -186,7 +186,7 @@ How do we measure the readability of error messages?  This RFC details an educat
 
 Likewise, While some of us have been dogfooding these errors, we don't know what long-term use feels like.  For example, after a time does the use of color feel excessive?  We can always update the errors as we go, but it'd be helpful to catch it early if possible.
 
-## Unresolved questions
+# Unresolved questions
 
 There are a few unresolved questions:
 * Editors that rely on pattern-matching the compiler output will need to be updated.  It's an open question how best to transition to using the new errors.  There is on-going discussion of standardizing the JSON output, which could also be used.
