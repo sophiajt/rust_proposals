@@ -58,7 +58,7 @@ To help users, this RFC proposes that --explain no longer uses an error code.  I
 
 # Detailed design
 
-The RFC is separated into two parts: the format of error messages and the format of --explain messages.
+The RFC is separated into two parts: the format of error messages and the format of expanded error messages (using --explain).
 
 ## Format of error messages
 
@@ -98,6 +98,14 @@ The line number column lets you know where the error is occurring in the file.  
 
 Inspired by Dybuk and Elm, the line numbers are separated with a 'wall', a separator formed from |>, to clearly distinguish what is a line number from what is source at a glance.
 
+As the wall also forms a way to visually separate distinct errors, we propose extending this concept to also support span-less notes and hints.  For example:
+
+```
+92 |>         config.target_dir(&pkg)
+   |>                           ^^^^ expected `core::workspace::Workspace`, found `core::package::Package`
+   => note: expected type `&core::workspace::Workspace<'_>`
+   => note:    found type `&core::package::Package`
+```
 ### Source area
 
 ![Image of new error format source area](http://www.jonathanturner.org/images/rust_error_3_new.png)
@@ -116,48 +124,27 @@ Taken together, primary and secondary labels create a 'flow' to the message.  Fl
 
 Note: We'll talk more about additional style guidance for wording to help create flow in the subsequent style RFC. 
 
-## Updating --explain
+## Expanded error messages
 
 Currently, --explain text focuses on the error code.  You can call the compiler with --explain <error code> and receive a verbose description of what causes errors of that number.
 
-We propose changing --explain to no longer take an error code.  Instead, passing --explain to the compiler (or to cargo) will turn the compiler output into an expanded form.  Specifically, errors will become more verbose versions of themselves.
-
-For example, today for E0507, the --explain text begins:
-
-```
-You tried to move out of a value which was borrowed. Erroneous code example:
-
-use std::cell::RefCell;
-
-struct TheDarkKnight;
-
-impl TheDarkKnight {
-    fn nothing_is_true(self) {}
-}
-
-fn main() {
-    let x = RefCell::new(TheDarkKnight);
-
-    x.borrow().nothing_is_true(); // error: cannot move out of borrowed content
-}
-
-Here, the `nothing_is_true` method takes the ownership of `self`. However,
-`self` cannot be moved because `.borrow()` only provides an `&TheDarkKnight`,
-which is a borrow of the content owned by the `RefCell`. To fix this error,
-you have three choices:
-
-* Try to avoid moving the variable.
-* Somehow reclaim the ownership.
-* Implement the `Copy` trait on the type.
-```
-
-This example shows off some of the great work that we've done to help explain the errors to users.  We propose extending this, and using the user's actual code, rather than having to fabricate example code.  An alternative using the proposed change may look like:
+We propose changing --explain to no longer take an error code.  Instead, passing --explain to the compiler (or to cargo) will turn the compiler output into an expanded form.  
 
 ![Image of Rust error in elm-style](http://www.jonathanturner.org/images/elm_like_rust.png)
 
+*Example of an expanded error message*
+
+The expanded error message effectively becomes a template.  The text of the template is the educational text that is explaining the message more more detail.  The template is then populated using the source lines, labels, and spans from the same compiler message that's printed in the default mode.  This lets the message writer call out each label or span as appropriate in the expanded text.
+
+It's possible to also add additional labels that aren't necessarily shown in the default error mode but would be available in the expanded error format.  For example, the above error might look like this is as a default error:
+
+![Image of same error without all of the same labels](http://www.jonathanturner.org/images/default_borrowed_content.png)
+
+This gives the explain text writer maximal flexibility without impacting the readability of the default message.
+
 ## Tying it together
 
-In addition, we propose that the final error message:
+Lastly, we propose that the final error message:
 
 ```
 error: aborting due to 2 previous errors
@@ -169,7 +156,7 @@ Be changed to notify users of this ability:
 note: Compile again with --explain for more information on these errors
 ```
 
-Rather than printing the error number on each message.
+As this helps inform the user of the --explain capability.
 
 ## Drawbacks
 
