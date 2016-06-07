@@ -15,6 +15,8 @@ A user's first experience with a crate when they are learning about a new one is
 
 # Detailed design
 
+The front page of the crate has four main points it should cover.  In this RFC, we cover each in turn.
+
 * [Introduction text to the crate](#introduction-text-to-the-crate)
 * [First Example](#first-example)
 * [Crate Capabilities](#crate-capabilities)
