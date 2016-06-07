@@ -21,7 +21,7 @@ Rust offers a unique value proposition in the landscape of languages in part by 
 Though a lot of time has been spent on the current error messages, they have a couple flaws which make them difficult to use.  Specifically, the current error format:
 
 * Repeats the file position on the left-hand side.  This offers no additional information, but instead makes the error harder to read.
-* Print messages about lines often out of order.  This makes it difficult for the developer to glance at the error and recognize why the error is occuring
+* Prints messages about lines often out of order.  This makes it difficult for the developer to glance at the error and recognize why the error is occuring
 * Lacks a clear visual break between errors.  As more errors occur it becomes more difficult to tell them apart.
 * Uses technical terminology that is difficult for new users who may be unfamiliar with compiler terminology or terminology specific to Rust.
 
