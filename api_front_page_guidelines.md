@@ -5,13 +5,13 @@
 
 # Summary
 
-This RFC is a companion to [API doc guidelines proposal](https://github.com/rust-lang/rfcs/pull/1574/).  In this RFC, we focus on the format and style of the "front page" of an API.  The goal of this RFC is to outline a clear presentation style for crate documentation that is helpful to new users of a crate.
+This RFC is a companion to the [API doc guidelines proposal](https://github.com/rust-lang/rfcs/pull/1574/).  In this RFC, we focus on the format and style of the "front page" of an API.  The goal of this RFC is to outline a clear presentation style for crate documentation that is helpful to new users of a crate.
 
 This work was jointly done with Jeremiah Peschka (aka peschkaj).
 
 # Motivation
 
-A user's first experience with a crate when they are learning about a new one is the front page of the crate's documentation.  Take together with the API documentation, the front page is a key piece of understanding a crate's purpose, how to use it, and its limitations.  Making sure this front page is clear is going to help users of your crate get the most out of it.
+A user's first experience with a crate when they are learning about a new one is the front page of the crate's documentation.  Taken together with the API documentation, the front page is a key piece of understanding a crate's purpose, how to use it, and its limitations.  Making sure this front page is clear is going to help users of your crate get the most out of it.
 
 # Detailed design
 
@@ -77,7 +77,7 @@ pub fn shave_the_yak(yak: &Yak) {
 
 ## Crate Capabilities
 
-The core capabilities of a crate are the main reason people will use your crate.  In the next section, you can document what each of these core capabilities are and how to use them.  For example, in a crate about random numbers, you may have sections about: generating random numbers, fitting numbers to statistical distributions, use in crypto, thread-local random numbers, and so on.
+The core capabilities of a crate are the main reason people will use your crate.  In the next section, you can document what each of these core capabilities are and how to use them.  For example, in a crate about random numbers, you may have sections about: generating random numbers, fitting numbers to statistical distributions, use in cryptography, thread-local random numbers, and so on.
 
 It's helpful to introduce and give a clear description for each capability separately to help your readers understand each concept individually before they begin to combine capabilities.
 
@@ -109,15 +109,15 @@ After this example, a user should immediately be able to use a thread safe rando
 
 More complex source examples should be included as a separate program in the `examples` directory.  Be wary of putting large examples in your doc where users will have to read past the code to get the beginning of your API documentation.
 
-You should also avoid examples that require understanding of external crates unless it's absolutely necessary. As a hypothetical example - your logging crate should not require the user to have experience with diesel. It's okay to leave these capabilities as an exercise left to the reader.
+You should also avoid examples that require understanding of external crates unless it's absolutely necessary. As a hypothetical example - your logging crate should not require the user to have experience with [diesel](http://diesel.rs/). It's okay to leave these capabilities as an exercise left to the reader.
 
 # Drawbacks
 
-A possible drawback of this approach is that it risks over-specifying a format that is ill-served for a particular crate.  For example, a crate with a lot of moving parts may need to use more complex examples because smaller examples lose education value or overall impact.
+A possible drawback of this approach is that it risks over-specifying a format that is ill-served for a particular crate.  For example, a crate with a lot of moving parts may need to use more complex examples because smaller examples lose educational value or overall impact.
 
 # Alternatives
 
-Alternatively, the format could use fewer section.  For example, we specify that each discrete piece of functionality should be documented separately.  However, by not specifying this to be the case, developers could write sections that make sense for their domain, which includes more cross-cutting examples.
+Alternatively, the format could use fewer sections.  For example, we specify that each discrete piece of functionality should be documented separately.  However, by not specifying this to be the case, developers could write sections that make sense for their domain, which includes more cross-cutting examples.
 
 # Unresolved questions
 
