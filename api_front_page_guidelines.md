@@ -15,6 +15,11 @@ A user's first experience with a crate when they are learning about a new one is
 
 # Detailed design
 
+* [Introduction text to the crate](#introduction-text-to-the-crate)
+* [First Example](#first-example)
+* [Crate Capabilities](#crate-capabilities)
+* [Source Examples](#source-examples)
+
 ## Introduction text to the crate
 
 The first thing potential users of your crates will see is the introductory summary. This section is a good place to introduce the what and the why the crate. A good introduction is concise but also provides enough information for the reader to understand the purpose of the crate. In addition, a good introduction provides a learning path for the user as they read the rest of the documentation.
