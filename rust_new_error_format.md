@@ -10,7 +10,7 @@ This RFC details work in close collaboration with Niko Matsakis and Yehuda Katz,
 
 # Motivation
 
-## New error format
+## Default error format
 
 Rust offers a unique value proposition in the landscape of languages in part by codifying concepts like ownership and borrowing. Because these concepts are unique to Rust, it's critical that the learning curve be as smooth as possible. And one of the most important tools for lowering the learning curve is providing excellent errors that serve to make the concepts less intimidating, and to help 'tell the story' about what those concepts mean in the context of the programmer's code.  
 
