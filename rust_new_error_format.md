@@ -35,7 +35,7 @@ This RFC details a redesign of errors to focus more on the source the programmer
 
 Languages like Elm have shown how effective an educational tool error messages can be if the explanations like our --explain text are mixed with the user's code.  As mentioned earlier, it's crucial for Rust to be easy-to-use, especially since it introduces a fair number of concepts that may be unfamiliar to the user.  Even experienced users may need to use --explain text from time to time when they encounter unfamiliar messages.
 
-While we have --explain text today, it uses generic examples that require the user to mental translate the given example into what works for their specific situation.
+While we have --explain text today, it uses generic examples that require the user to mentally translate the given example into what works for their specific situation.
 
 ```
 You tried to move out of a value which was borrowed. Erroneous code example:
