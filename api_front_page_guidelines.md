@@ -11,7 +11,7 @@ This work was jointly done with Jeremiah Peschka (aka peschkaj).
 
 # Motivation
 
-A user's first experience with a crate when they are learning about a new one is the front page of the crate's documentation.  Taken together with the API documentation, the front page is a key piece of understanding a crate's purpose, how to use it, and its limitations.  Making sure this front page is clear is going to help users of your crate get the most out of it.
+A user's first experience with a crate is the front page of the crate's documentation. Taken together with the API documentation, the front page is a key piece of understanding a crate's purpose, how to use it, and its limitations.  Making sure this front page is clear will help users of your crate get the most out of it.
 
 # Detailed design
 
@@ -41,15 +41,15 @@ There are several things that make this a good introduction section:
 * Even if you don't want to read the rest of the `README`, you have enough to get started.
 * Readable by a layman, no jargon is introduced in the first few paragraphs.
     
-What do we mean by "no jargon is introduced in the first few paragraphs"? Using the `rand` crate as an example - the crate's initial documentation probably should _not_ include a discussion of cryptographically secure random number generators since its primary purpose, for most Rust developers, will be to product any random number. This information should instead be provided in a separate section that specifically discuss cryptographically secure random number generation.
+What do we mean by "no jargon is introduced in the first few paragraphs"? Using the `rand` crate as an example - the crate's initial documentation probably should _not_ include a discussion of cryptographically secure random number generators since its primary purpose, for most Rust developers, will be to product any random number. This information should instead be provided in a separate section that specifically discusses cryptographically secure random number generation.
 
 In general - it's good to give a developer a place to easily learn what your crate is about. Once they have the general idea, you can dive into more details that are specific to your crate, including jargon that would be common with its use.
 
 ## First Example
 
-The first example should provide an easily understood example to help a developer understand how they can start making use of your crate. Ideally, this example should only demonstrate your crate and core Rust functionality. Avoid large examples with lots of features as this tends to be a better fit in the examples directory.
+The first example should provide an easily understood example to help a developer understand how they can start making use of your crate. Ideally, this example should only demonstrate your crate and core Rust functionality. Avoid large examples with lots of features; larger examples are better fit for the `examples` directory.
 
-Here's a sample of a good first example of a crate.  Notice that the author has focused on getting started, showing how to import and use the crate, and a few simple uses of common functionality.
+Let's look at a sample of a good first example of a crate. Notice that the author has focused on getting started, showing how to import and use the crate, and a few simple uses of common functionality.
 
 ```rust
 #[macro_use]
