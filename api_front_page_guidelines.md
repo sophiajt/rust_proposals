@@ -41,7 +41,7 @@ There are several things that make this a good introduction section:
 * Even if you don't want to read the rest of the `README`, you have enough to get started.
 * Readable by a layman, no jargon is introduced in the first few paragraphs.
     
-What do we mean by "no jargon is introduced in the first few paragraphs"? Using the `rand` crate as an example - the crate's initial documentation probably should _not_ include a discussion of cryptographically secure random number generators since its primary purpose, for most Rust developers, will be to product any random number. This information should instead be provided in a separate section that specifically discusses cryptographically secure random number generation.
+What do we mean by "no jargon is introduced in the first few paragraphs"? Using the `rand` crate as an example - the crate's initial documentation probably should _not_ include a discussion of cryptographically secure random number generators since its primary purpose, for most Rust developers, will be to produce any random number. This information should instead be provided in a separate section that specifically discusses cryptographically secure random number generation.
 
 In general - it's good to give a developer a place to easily learn what your crate is about. Once they have the general idea, you can dive into more details that are specific to your crate, including jargon that would be common with its use.
 
