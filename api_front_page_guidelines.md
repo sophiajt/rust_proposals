@@ -15,7 +15,7 @@ A user's first experience with a crate is the front page of the crate's document
 
 # Detailed design
 
-The front page of the crate has should cover four main points.  In this RFC, we cover each in turn.
+The front page of the crate should cover four main points.  In this RFC, we cover each in turn.
 
 * [Introduction text to the crate](#introduction-text-to-the-crate)
 * [First Example](#first-example)
