@@ -89,7 +89,7 @@ Here's a good example from the 'rand' crate:
 >
 > An application that requires an entropy source for cryptographic purposes must use OsRng, which reads randomness from the source that the operating system provides (e.g. /dev/urandom on Unixes or CryptGenRandom() on Windows). The other random number generators provided by this module are not suitable for such purposes.
 
-## Source Examples
+## Capability Examples
 
 Sample code for each crate capability should be as simple as possible and side effect free. In the rand crate, thread safe RNG is demonstrated 5 lines of code:
 
