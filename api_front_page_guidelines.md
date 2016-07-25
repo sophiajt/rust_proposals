@@ -47,7 +47,7 @@ In general - it's good to give a developer a place to easily learn what your cra
 
 ## First Example
 
-The first example should provide an easily understood example to help a developer understand how they can start making use of your crate. Ideally, this example should only demonstrate your crate and core Rust functionality. Avoid large examples with lots of features; larger examples are better fit for the `examples` directory.
+The first example should provide a concise example to help a developer understand how they can work with your crate. Ideally, this example should only demonstrate your crate and core Rust functionality. Avoid large examples with lots of features; larger examples are better fit for the `examples` directory.
 
 Let's look at a sample of a good first example of a crate. Notice that the author has focused on getting started, showing how to import and use the crate, and a few simple uses of common functionality.
 
